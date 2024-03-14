@@ -7,9 +7,9 @@ output "instance_id1" {
 }
 output "instance_id2" {
 
-  description = "ID of the MacOS EC2 instance"
+  description = "ID of the SUSE Linux EC2 instance"
 
-  value       = aws_instance.macosec2.id
+  value       = aws_instance.suselinuxec2.id
 
 }
 output "instance_id3" {
