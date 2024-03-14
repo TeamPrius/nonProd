@@ -52,8 +52,8 @@ resource "aws_instance" "amazonlinuxec2" {
 
 # Create 2nd EC2 instance
 
-resource "aws_instance" "macosec2" {
-  ami              	 	= "ami-0873bd33f11079049"
+resource "aws_instance" "suselinuxec2" {
+  ami              	 	= "ami-05efd9e66ddc3cf4b"
   instance_type     		= "t2.micro"
   subnet_id         		= aws_subnet.private_subnet.id
   availability_zone 		= "us-east-1a"
@@ -67,7 +67,7 @@ resource "aws_instance" "macosec2" {
   }
 
   tags = {
-    Name = "MacOS EC2"
+    Name = "SUSE Linux EC2"
   }
 }
 
