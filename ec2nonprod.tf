@@ -2,11 +2,11 @@
 
 resource "aws_security_group" "nonprodsg" {
   name        = "nonprodsg"
-  description = "Allow https traffic"
+  description = "Allow https and icmp traffic"
   vpc_id      = aws_vpc.nonprod.id
 
   tags = {
-    Name = "App-SG"
+    Name = "nonprod-SG"
   }
 }
 
@@ -19,7 +19,13 @@ resource "aws_vpc_security_group_ingress_rule" "allow_https" {
   ip_protocol       = "tcp"
   to_port           = 443
 }
-
+resource "aws_vpc_security_group_ingress_rule" "allow_icmp" {
+  security_group_id = aws_security_group.nonprodsg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 8
+  ip_protocol       = "icmp"
+  to_port           = 0
+}
 
 #Outbound rules
 

@@ -24,6 +24,12 @@ resource "aws_subnet" "private_subnet_nonprod" {
 
 resource "aws_route_table" "private_rt_nonprod" {
   vpc_id = aws_vpc.nonprod.id
+  
+  route {
+    cidr_block = "192.168.0.0/24"
+    gateway_id = aws_ec2_transit_gateway.transit_gateway.id
+  }
+  
   tags = {
     Name = "Private Route Table Non-Prod"
   }
